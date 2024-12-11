@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:projet1/artisan/home_page_artisan.dart';
-import 'package:projet1/artisan/tools_page_artisan.dart';
-import 'package:projet1/artisan/profile_page_artisan.dart';  // Assure-toi que c'est la bonne page
+import 'package:projet1/artisan/home_page_artisan.dart'; // Assurez-vous d'avoir le bon chemin d'importation
+import 'package:projet1/artisan/tools_page_artisan.dart'; // Assurez-vous d'avoir le bon chemin d'importation
+import 'package:projet1/artisan/profile_page_artisan.dart';
 import 'package:projet1/artisan/notifications_page_artisan.dart';
 import 'package:projet1/artisan/more_page_artisan.dart';
-
-import '../user/dashboard_user.dart';
 
 class DashboardArtisan extends StatefulWidget {
   const DashboardArtisan({Key? key}) : super(key: key);
@@ -18,7 +16,7 @@ class _DashboardArtisanState extends State<DashboardArtisan> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePageArtisan(),
+    HomePageArtisan(),
     const ToolsPageArtisan(),
     const ProfilePageArtisan(),
     const NotificationsPageArtisan(),
@@ -46,7 +44,7 @@ class _DashboardArtisanState extends State<DashboardArtisan> {
           BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Tools'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
         ],
       ),
     );
