@@ -3,7 +3,9 @@ import 'package:projet1/artisan/home_page_artisan.dart';
 import 'package:projet1/artisan/tools_page_artisan.dart';
 import 'package:projet1/artisan/profile_page_artisan.dart';  // Assure-toi que c'est la bonne page
 import 'package:projet1/artisan/notifications_page_artisan.dart';
+import 'package:projet1/artisan/more_page_artisan.dart';
 
+import '../user/dashboard_user.dart';
 
 class DashboardArtisan extends StatefulWidget {
   const DashboardArtisan({Key? key}) : super(key: key);
@@ -18,8 +20,9 @@ class _DashboardArtisanState extends State<DashboardArtisan> {
   final List<Widget> _pages = [
     const HomePageArtisan(),
     const ToolsPageArtisan(),
-    const NotificationsPageArtisan(),
     const ProfilePageArtisan(),
+    const NotificationsPageArtisan(),
+    const MorePageArtisan(),
   ];
 
   void _onItemTapped(int index) {
@@ -41,8 +44,9 @@ class _DashboardArtisanState extends State<DashboardArtisan> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Tools'),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'Notifications'),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'setting'),
         ],
       ),
     );

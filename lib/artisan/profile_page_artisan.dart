@@ -4,167 +4,120 @@ class ProfilePageArtisan extends StatefulWidget {
   const ProfilePageArtisan({Key? key}) : super(key: key);
 
   @override
-  _ProfilePageArtisanState createState() => _ProfilePageArtisanState();
+  _HomePageArtisanState createState() => _HomePageArtisanState();
 }
 
-class _ProfilePageArtisanState extends State<ProfilePageArtisan> {
-  // Variable pour gérer le thème sombre/clair
-  bool _isDarkMode = false;
+class _HomePageArtisanState extends State<ProfilePageArtisan> {
+  // Variable pour indiquer si l'artisan est disponible ou non
+  bool _isAvailable = true;
 
-  void _toggleTheme() {
+  // Liste des demandes récentes (exemple)
+  final List<String> recentRequests = [
+    "Plomberie - Appartement 101",
+    "Électricité - Maison de ville",
+    "Peinture - Bureau de direction",
+  ];
+
+  // Toggle la disponibilité de l'artisan
+  void _toggleAvailability() {
     setState(() {
-      _isDarkMode = !_isDarkMode;
+      _isAvailable = !_isAvailable;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: _isDarkMode ? Colors.black87 : Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // Bouton pour changer le mode clair/sombre
-            IconButton(
-              icon: Icon(
-                _isDarkMode ? Icons.brightness_7 : Icons.brightness_4,
-                color: _isDarkMode ? Colors.white : Colors.black,
-                size: 30,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Informations de profil
+          Row(
+            children: [
+              const CircleAvatar(
+                radius: 40,
+                backgroundImage: NetworkImage('https://via.placeholder.com/150'),
               ),
-              onPressed: _toggleTheme,
-            ),
-            const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              'Nicolas Adams',
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-              ),
-            ),
-            Text(
-              'nicolasadams@gmail.com',
-              style: TextStyle(
-                fontSize: 16,
-                color: _isDarkMode ? Colors.white70 : Colors.grey, // Couleur du texte
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Bouton "Edit Profil"
-            ElevatedButton(
-              onPressed: () {
-                // Logique pour éditer le profil (ex. redirection vers une page de modification)
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: _isDarkMode ? Colors.blueAccent : Colors.blue, // Couleur du bouton
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text(
-                'Edit Profil',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(height: 0),
-
-            Expanded(
-              child: ListView(
+              const SizedBox(width: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    elevation: 5,
-                    color: _isDarkMode ? Colors.grey[800] : Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.lock, size: 40, color: Colors.blue),
-                      title: Text(
-                        'Privacy',
-                        style: TextStyle(
-                          color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
+                  const Text(
+                    'Nicolas Adams',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    elevation: 5,
-                    color: _isDarkMode ? Colors.grey[800] : Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.help, size: 40, color: Colors.blue),
-                      title: Text(
-                        'Help & Support',
-                        style: TextStyle(
-                          color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    elevation: 5,
-                    color: _isDarkMode ? Colors.grey[800] : Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.settings, size: 40, color: Colors.blue),
-                      title: Text(
-                        'Settings',
-                        style: TextStyle(
-                          color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    elevation: 5,
-                    color: _isDarkMode ? Colors.grey[800] : Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.person_add, size: 40, color: Colors.blue),
-                      title: Text(
-                        'Invite a Friend',
-                        style: TextStyle(
-                          color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    elevation: 5,
-                    color: _isDarkMode ? Colors.grey[800] : Colors.white,
-                    child: ListTile(
-                      leading: const Icon(Icons.logout, size: 40, color: Colors.red),
-                      title: Text(
-                        'Logout',
-                        style: TextStyle(
-                          color: _isDarkMode ? Colors.white : Colors.black, // Couleur du texte
-                        ),
-                      ),
-                      onTap: () {
-                        // Logique pour la déconnexion
-                      },
-                    ),
+                  const Text(
+                    'Plombier',
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ],
               ),
+            ],
+          ),
+          const SizedBox(height: 20),
+
+          // Bouton pour indiquer la disponibilité
+          ElevatedButton(
+            onPressed: _toggleAvailability,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: _isAvailable ? Colors.green : Colors.red,
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-          ],
-        ),
+            child: Text(
+              _isAvailable ? 'Disponible' : 'Indisponible',
+              style: const TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Liste des demandes récentes
+          const Text(
+            'Demandes récentes',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView.builder(
+              itemCount: recentRequests.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  elevation: 5,
+                  child: ListTile(
+                    leading: const Icon(Icons.work, size: 40, color: Colors.blue),
+                    title: Text(recentRequests[index]),
+                    onTap: () {
+                      // Logique pour consulter plus de détails sur la demande
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+
+          // Bouton pour accéder à la gestion des services
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              // Redirection vers la page de gestion des services
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue,
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: const Text(
+              'Gérer mes services',
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ),
+        ],
       ),
     );
   }
